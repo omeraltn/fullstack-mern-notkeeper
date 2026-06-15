@@ -52,10 +52,12 @@ Proje iki ana dizinden oluşmaktadır: `backend` ve `front-end`.
 cd backend
 npm install
 
+```
 
 ## Ekran Görüntüsü
-![](./public/screen.jpg)
+
+![](./front-end/public/screen.jpg)
 
 ## GIF
-![](./public/ekran.gif)
-```
+
+![](./front-end/public/ekran.gif)
