@@ -1,15 +1,14 @@
 import { useNotContext } from "../hooks/useNotContext";
-import moment from "moment";
 import { useAuthContext } from "../hooks/useAuthContext";
+import moment from "moment";
 
 const NotDetay = ({ not }) => {
   const { dispatch } = useNotContext();
   const { kullanici } = useAuthContext();
 
   const handleClick = async () => {
-    if (!kullanici) {
-      return;
-    }
+    if (!kullanici) return;
+
     const response = await fetch(
       "http://localhost:4000/api/notlar/" + not._id,
       {
@@ -30,18 +29,12 @@ const NotDetay = ({ not }) => {
     <div className="not-detay">
       <h4>{not?.baslik}</h4>
       <p>{not?.aciklama}</p>
-      <p
-        style={{
-          fontSize: "12px",
-          color: "#999",
-          marginTop: "5px",
-          fontStyle: "italic",
-        }}
+      <p className="zaman">{moment(not?.createdAt).fromNow()}</p>
+      <span
+        onClick={handleClick}
+        className="material-symbols-outlined"
+        title="Sil"
       >
-        {moment(not?.createdAt).fromNow()}
-      </p>
-      {/*  ↑↑↑ Doğru kullanım */}
-      <span onClick={handleClick} className="material-symbols-outlined">
         delete
       </span>
     </div>
